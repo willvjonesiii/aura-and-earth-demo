@@ -211,7 +211,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .card p{font-size:0.9rem;color:var(--cream-dim)}
 
 /* ---- quote band ---- */
-.quote-band{position:relative;text-align:center;overflow:hidden}
+.quote-band{position:sticky;top:0;text-align:center;overflow:hidden;z-index:5;border-radius:2rem 2rem 0 0}
 .quote-band .qbg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;opacity:0.28;filter:saturate(0.85)}
 .quote-band::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,var(--void),rgba(23,17,13,0.55),var(--void))}
 .quote-band .wrap{position:relative;z-index:2}
