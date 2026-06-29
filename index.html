@@ -20,6 +20,7 @@
   --rose-pale:#e8be6a;--rose:#d4a03a;--rose-deep:#7a4e2d;
   --dark:#1a1510;--bark:#2c2218;--gold:#d4a03a;
   --text:#1a1510;--muted:#7a6050;--border:rgba(122,78,45,.12);
+  --void:#17110d;--gold-lt:#e3c592;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -290,6 +291,38 @@ footer{background:var(--dark);padding:76px 72px 40px;}
 .form-status{font-size:.8rem;letter-spacing:.06em;margin-top:18px;text-align:center;min-height:1.4em;}
 .form-status.ok{color:var(--rose-pale);}
 .form-status.err{color:#e8a0a0;}
+
+/* ── GRAFTED HERO (from main build) ── */
+.ae-hero{position:relative;min-height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;background:var(--void);}
+.ae-hero-bg{position:absolute;inset:0;z-index:0;background:var(--void);transform-origin:center center;animation:aebreathe 10s ease-in-out infinite}
+@keyframes aebreathe{0%,100%{transform:scale(1.0)}50%{transform:scale(1.04)}}
+.ae-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%;transform:scale(1.04) translateZ(0);will-change:transform;}
+@media(prefers-reduced-motion:reduce){.ae-hero-bg{animation:none}}
+.ae-hero-grad{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 60% 70% at 50% 46%,rgba(10,8,6,0.28) 0%,rgba(10,8,6,0.55) 55%,rgba(10,8,6,0.88) 100%);}
+.ae-hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:0 2rem;margin-top:-28vh}
+.ae-hero-emblem{position:absolute;top:5rem;left:0;right:0;margin:0 auto;display:block;z-index:2;opacity:0;animation:aegrowIn 1.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;}
+.ae-hero-wordmark{font-family:'Cinzel',serif;font-weight:400;font-size:clamp(2.2rem,5.2vw,5rem);letter-spacing:0.22em;text-transform:uppercase;line-height:1;}
+.w-aura{color:#d4a03a}
+.w-earth{color:#7a4e2d}
+.w-and{background:linear-gradient(135deg,#d4a03a 50%,#7a4e2d 50%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+.ae-hero-name{font-family:'Cinzel',serif;font-weight:500;font-size:clamp(0.85rem,1.4vw,1.1rem);letter-spacing:0.42em;text-transform:uppercase;color:#c42020;margin-top:2.2rem;text-shadow:0 1px 18px rgba(180,20,20,0.55);}
+.ae-hero-bottom{position:absolute;bottom:clamp(2rem,4vh,3.5rem);left:0;right:0;z-index:2;display:flex;justify-content:center;opacity:0;animation:aefadeIn .9s ease .72s forwards}
+@keyframes aefadeIn{from{opacity:0}to{opacity:1}}
+.ae-hero .btn{display:inline-block;white-space:nowrap;flex-shrink:0;cursor:pointer;font-family:'Mulish',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;font-size:0.65rem;padding:0.8rem 2.2rem;border:1px solid var(--gold);color:var(--gold-lt);background:transparent;transition:background .35s,color .35s,border-color .35s;text-decoration:none;}
+.ae-hero .btn-forest{background:#2e5e27;border-color:#2e5e27;color:#f3ebdd}
+.ae-hero .btn-forest:hover{background:#3d7a34;border-color:#3d7a34;color:#fff}
+@keyframes aegrowIn{from{opacity:0;transform:scale(0.93)}to{opacity:1;transform:scale(1)}}
+.ae-hero .hr{opacity:0;animation:aegrowIn 1.6s cubic-bezier(0.16,1,0.3,1) forwards}
+.ae-hero .hr.d1{animation-delay:.1s}
+.ae-hero .hr.d2{animation-delay:.32s}
+@media(max-width:560px){.ae-hero-wordmark{font-size:clamp(2.2rem,11vw,3.4rem)}.ae-hero-emblem{top:3.5rem}}
+/* ── GRAFTED QUOTE BAND (from main build) ── */
+.quote-band{position:relative;text-align:center;padding:clamp(80px,12vw,130px) 56px;background-image:url('https://images.unsplash.com/photo-1551621962-b8f40dee2f2c?q=80&w=1600&auto=format&fit=crop');background-attachment:fixed;background-size:cover;background-position:center;background-color:var(--void);box-shadow:0 8px 48px rgba(0,0,0,0.7),0 -8px 48px rgba(0,0,0,0.7)}
+.quote-band::before{content:"";position:absolute;inset:0;z-index:0;background:rgba(10,8,6,0.72)}
+.quote-band .wrap{position:relative;z-index:1}
+@media(hover:none){.quote-band{background-attachment:scroll}}
+.quote-band blockquote{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.7rem,4.4vw,3.2rem);line-height:1.28;max-width:18ch;margin:0 auto;font-weight:300;color:var(--cream)}
+.quote-band cite{display:block;margin-top:1.8rem;font-style:normal;font-family:'Mulish',sans-serif;font-size:0.74rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold)}
 </style>
 </head>
 <body>
@@ -308,46 +341,38 @@ footer{background:var(--dark);padding:76px 72px 40px;}
   </ul>
 </nav>
 
-<section class="hero">
-  <img class="hero-fallback" src="635282635_2676193369420511_901645791334053077_n.jpg" alt="Goddess Aje Nafia Holmes" style="opacity:.78;">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-line"></div>Healer &nbsp;&middot;&nbsp; Author &nbsp;&middot;&nbsp; Educator &nbsp;&middot;&nbsp; Guide<div class="hero-line"></div>
-    </div>
-    <h1>Aura &amp;<em>Earth</em></h1>
-    <p class="hero-sub">&ldquo;Most women who look like me have not been allowed to rest.&rdquo;</p>
-    <div class="hero-btns">
-      <a href="#about" class="btn-ghost">Meet Goddess Aje</a>
-      <a href="#work" class="btn-fill">The Pilgrimages</a>
-    </div>
+<header class="ae-hero" id="top">
+  <div class="ae-hero-bg">
+    <img id="heroImg" src="635282635_2676193369420511_901645791334053077_n.jpg" alt="Goddess Aje Nafia Holmes" fetchpriority="high">
+  </div>
+  <div class="ae-hero-grad"></div>
+  <svg class="ae-hero-emblem" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <line x1="26" y1="2" x2="26" y2="50" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
+    <line x1="2" y1="26" x2="50" y2="26" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
+    <line x1="7.8" y1="7.8" x2="44.2" y2="44.2" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
+    <line x1="44.2" y1="7.8" x2="7.8" y2="44.2" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
+    <line x1="26" y1="2" x2="26" y2="12" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
+    <line x1="26" y1="40" x2="26" y2="50" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
+    <line x1="2" y1="26" x2="12" y2="26" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
+    <line x1="40" y1="26" x2="50" y2="26" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
+    <circle cx="26" cy="26" r="2.5" fill="rgba(243,235,221,0.8)"/>
+    <circle cx="26" cy="26" r="5" stroke="rgba(243,235,221,0.3)" stroke-width="0.5" fill="none"/>
+  </svg>
+  <div class="ae-hero-inner">
+    <h1 class="ae-hero-wordmark hr d1"><span class="w-aura">Aura</span> <span class="w-and">And</span> <span class="w-earth">Earth</span></h1>
+    <p class="ae-hero-name hr d2">Goddess Aje</p>
+  </div>
+  <div class="ae-hero-bottom">
+    <a href="#contact" class="btn btn-forest">Join the Waitlist</a>
+  </div>
+</header>
+
+<section class="quote-band">
+  <div class="wrap">
+    <blockquote class="rv">Most women who look like me have not been allowed to rest.</blockquote>
+    <cite class="rv">Goddess Aje Nafia Holmes</cite>
   </div>
 </section>
-
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span class="t-item">African Cupping<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Oracle &amp; Tarot<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Egg Cleanse<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Road Openers<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">House Cleanse<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Shadow Work<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Sacred Pilgrimage<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">The Apothecary<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Spell Work<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Coaching<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">African Cupping<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Oracle &amp; Tarot<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Egg Cleanse<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Road Openers<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">House Cleanse<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Shadow Work<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Sacred Pilgrimage<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">The Apothecary<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Spell Work<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-    <span class="t-item">Coaching<span class="t-sep">&nbsp;&#10022;&nbsp;</span></span>
-  </div>
-</div>
 
 <section class="about" id="about">
   <div class="about-frame rv-l">
@@ -605,6 +630,17 @@ footer{background:var(--dark);padding:76px 72px 40px;}
       else{throw new Error();}
     }catch(err){btn.textContent='Send Message';btn.disabled=false;status.textContent='Something went wrong. Please try again.';status.className='form-status err';}
   });
+})();
+
+/* grafted hero parallax */
+(function(){
+  var heroImg=document.getElementById('heroImg');
+  if(heroImg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    window.addEventListener('scroll',function(){
+      var offset=Math.min(window.scrollY*0.04,window.innerHeight*0.025);
+      heroImg.style.transform='scale(1.06) translateY(-'+offset+'px) translateZ(0)';
+    },{passive:true});
+  }
 })();
 </script>
 </body>
