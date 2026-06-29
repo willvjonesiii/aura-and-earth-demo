@@ -86,9 +86,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   position:fixed;top:0;left:0;right:0;z-index:1000;
   display:flex;align-items:center;justify-content:space-between;
   padding:1.1rem clamp(1.4rem,5vw,4rem);
-  transition:background .4s,backdrop-filter .4s,padding .4s,border-color .4s;
+  transition:background .4s,backdrop-filter .4s,padding .4s,border-color .4s,opacity .5s;
   border-bottom:1px solid transparent;
+  opacity:0;pointer-events:none;
 }
+.nav.shown{opacity:1;pointer-events:auto}
 .nav.scrolled{
   background:rgba(23,17,13,0.82);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--hairline);padding-top:0.8rem;padding-bottom:0.8rem;
@@ -309,7 +311,7 @@ footer{background:var(--ink);border-radius:3rem 3rem 0 0;padding:clamp(3rem,7vw,
 
 /* ---- ACCESSIBILITY MODE ---- */
 body.a11y{background:#fff;color:#16120d}
-body.a11y .nav{background:#fff;border-bottom:2px solid #16120d}
+body.a11y .nav{background:#fff;border-bottom:2px solid #16120d;opacity:1;pointer-events:auto}
 body.a11y .nav.scrolled{background:#fff}
 body.a11y .brand,body.a11y .hero h1,body.a11y h1,body.a11y h2,body.a11y h3,body.a11y h4{color:#16120d;font-weight:600}
 body.a11y .eyebrow,body.a11y .brand-sub,body.a11y .pcard .loc,body.a11y .foot-col h4,body.a11y form#waitForm label,body.a11y .quote-band cite{color:#7a2a1d;font-size:0.95rem}
@@ -581,14 +583,14 @@ body.a11y .hero-bg{animation:none}
 </main>
 
 <!-- FOOTER -->
-<footer class="rv">
+<footer>
   <div class="wrap">
     <div class="foot-top">
-      <div class="foot-brand rv">
+      <div class="foot-brand">
         <span class="brand">Aura <b>&amp;</b> Earth</span>
         <p>Sacred energy work, ritual, and women's pilgrimages with Goddess Aje Nafia Holmes. Come home a different woman.</p>
       </div>
-      <div class="foot-cols rv">
+      <div class="foot-cols">
         <div class="foot-col">
           <h4>Explore</h4>
           <a href="#about">The Healer</a>
@@ -604,7 +606,7 @@ body.a11y .hero-bg{animation:none}
         </div>
       </div>
     </div>
-    <div class="foot-bottom rv">
+    <div class="foot-bottom">
       <span>© 2026 Aura &amp; Earth · Goddess Aje Nafia Holmes. All rights reserved.</span>
       <span>Crafted by Merkaba Web Design</span>
     </div>
@@ -616,7 +618,11 @@ body.a11y .hero-bg{animation:none}
 <script>
 /* nav scroll */
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  nav.classList.toggle('shown',y>0);
+  nav.classList.toggle('scrolled',y>40);
+},{passive:true});
 
 /* mobile menu */
 const navToggle=document.getElementById('navToggle');
