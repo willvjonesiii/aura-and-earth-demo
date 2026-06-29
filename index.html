@@ -131,11 +131,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .hero-grad{position:absolute;inset:0;z-index:1;
   background:radial-gradient(ellipse 60% 70% at 50% 46%,rgba(10,8,6,0.28) 0%,rgba(10,8,6,0.55) 55%,rgba(10,8,6,0.88) 100%);
 }
-.hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:0 2rem;margin-top:-34vh}
-.hero-emblem{margin-bottom:1.2rem;opacity:0.9}
+.hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:0 2rem;margin-top:-40vh}
+.hero-emblem{
+  position:absolute;top:5rem;left:50%;transform:translateX(-50%);
+  z-index:2;opacity:0;
+  animation:growIn 1.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
+}
 .hero-wordmark{
   font-family:'Cinzel',serif;font-weight:400;
-  font-size:clamp(1.8rem,4.2vw,4rem);
+  font-size:clamp(2.2rem,5.2vw,5rem);
   letter-spacing:0.22em;text-transform:uppercase;
   line-height:1;
 }
@@ -380,21 +384,21 @@ body.a11y .hero-bg{animation:none}
     <img id="heroImg" src="635282635_2676193369420511_901645791334053077_n.jpg" alt="Goddess Aje Nafia Holmes" fetchpriority="high">
   </div>
   <div class="hero-grad"></div>
+  <svg class="hero-emblem" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <line x1="26" y1="2" x2="26" y2="50" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
+    <line x1="2" y1="26" x2="50" y2="26" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
+    <line x1="7.8" y1="7.8" x2="44.2" y2="44.2" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
+    <line x1="44.2" y1="7.8" x2="7.8" y2="44.2" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
+    <line x1="26" y1="2" x2="26" y2="12" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
+    <line x1="26" y1="40" x2="26" y2="50" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
+    <line x1="2" y1="26" x2="12" y2="26" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
+    <line x1="40" y1="26" x2="50" y2="26" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
+    <circle cx="26" cy="26" r="2.5" fill="rgba(243,235,221,0.8)"/>
+    <circle cx="26" cy="26" r="5" stroke="rgba(243,235,221,0.3)" stroke-width="0.5" fill="none"/>
+  </svg>
   <div class="hero-inner">
-    <svg class="hero-emblem hr d1" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <line x1="26" y1="2" x2="26" y2="50" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
-      <line x1="2" y1="26" x2="50" y2="26" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
-      <line x1="7.8" y1="7.8" x2="44.2" y2="44.2" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
-      <line x1="44.2" y1="7.8" x2="7.8" y2="44.2" stroke="rgba(243,235,221,0.65)" stroke-width="0.6"/>
-      <line x1="26" y1="2" x2="26" y2="12" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
-      <line x1="26" y1="40" x2="26" y2="50" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
-      <line x1="2" y1="26" x2="12" y2="26" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
-      <line x1="40" y1="26" x2="50" y2="26" stroke="rgba(243,235,221,0.9)" stroke-width="0.8"/>
-      <circle cx="26" cy="26" r="2.5" fill="rgba(243,235,221,0.8)"/>
-      <circle cx="26" cy="26" r="5" stroke="rgba(243,235,221,0.3)" stroke-width="0.5" fill="none"/>
-    </svg>
-    <h1 class="hero-wordmark hr d2"><span class="w-aura">Aura</span> <span class="w-and">And</span> <span class="w-earth">Earth</span></h1>
-    <p class="hero-name hr d3">Goddess Aje</p>
+    <h1 class="hero-wordmark hr d1"><span class="w-aura">Aura</span> <span class="w-and">And</span> <span class="w-earth">Earth</span></h1>
+    <p class="hero-name hr d2">Goddess Aje</p>
   </div>
   <div class="hero-bottom">
     <a href="#waitlist" class="btn btn-forest">Join the Waitlist</a>
