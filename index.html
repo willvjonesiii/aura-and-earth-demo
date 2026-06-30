@@ -101,7 +101,7 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:300;}
 .about-frame{position:relative;overflow:hidden;min-height:700px;border-radius:0;box-shadow:none;background:var(--dark);}
 .about-frame img{position:absolute;left:0;right:0;top:-18%;width:100%;height:136%;object-fit:cover;object-position:center 35%;display:block;will-change:transform;}
 /* soft right bleed — image dissolves into cream bg */
-.about-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 52%,var(--cream) 100%);pointer-events:none;z-index:1;}
+.about-frame::after{content:'';position:absolute;inset:0;background:none;pointer-events:none;z-index:1;}
 .about-text{padding:100px 72px 100px 52px;display:flex;flex-direction:column;justify-content:center;}
 .about-text h2{font-size:clamp(30px,4vw,50px);line-height:1.2;margin-bottom:22px;}
 .about-text h2 em{font-style:italic;color:var(--rose);}
